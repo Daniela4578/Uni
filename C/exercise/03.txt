@@ -6,7 +6,6 @@
 #include<stdio.h>
 
 int main() {
-
     int num ;
     scanf("%d",&num);
     if (num % 2 == 0) {
@@ -17,7 +16,7 @@ int main() {
     }
 
     if (num < 0) {
-        printf("%d is negative\n", num);
+        printf("%d is negative\n", num); 
     }
     else if (num == 0) {
         printf("%d is zero\n", num);
@@ -36,5 +35,258 @@ int main() {
 
     return 0;
 }
+
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Да се прочетат три числа и да се изведе дали могат да бъдат дължините на триъгълник.
+- проверете дали a + b > c, a + c > b, b + c > a
+- ако могат изведете вида на триъгълника: равностранен, равнобедрен или разностранен.
+
+#include <stdio.h>
+
+int main(void) {
+    int a;
+    int b;
+    int c;
+    scanf("%d",&a);
+    scanf("%d",&b);
+    scanf("%d",&c);
+    if (a+b > c && b+c > a && c+a > b) {
+        printf("Triangle!");
+	if (a==b && b==c && c==a) {
+            printf("Equilateral triangle");
+        }
+        else if (a == b || b == c || c == a) {
+            printf("Isosceles triangle");
+        }
+        else {
+            printf("Scalene triangle");
+        }
+    }
+    else {
+        printf("Not a triangle!");
+    }
+
+    return 0;
+}
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Да се прочете цяло чисдо от 1 до 12 и да се изведе съответстващият му месец и
+сезона, в който попада,
+Пример:1 — Януари (Зима), 6— Юни (Лято), 11 — Ноември (Ecен)
+(Да се предвиди случай, когато не е въведено валидно число!)
+
+#include <stdio.h>
+
+int main(void) {
+    int num;
+    scanf("%d",&num);
+    if ( 1 < num && num < 12 ) {
+        switch (num) {
+            case 1:
+                printf("January/winter");break;
+            case 2:
+                printf("February/winter");break;
+            case 3:
+                printf("March/spring");break;
+            case 4:
+                printf("April/spring");break;
+            case 5:
+                printf("May/spring");break;
+            case 6:
+                printf("June/summer");break;
+            case 7:
+                printf("July/summer");break;
+            case 8:
+                printf("August/summer");break;
+            case 9:
+                printf("September/autum");break;
+            case 10:
+                printf("October/autum");break;
+            case 11:
+                printf("November/autum");break;
+            case 12:
+                printf("December/winter");break;
+        }
+    }
+    else {
+        printf("Invalid input!\nNumber should be between 1 and 12.");
+    }
+    return 0;
+}
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Да се прочете цяло число и да се изведе дали е просто число
+(Просто число е число, когато се дели само на 1 и на себе си)
+
+#include <stdio.h>
+
+int fun(int number) {
+        for(int i=2;i<number;i++) {
+                if (number % i == 0) {
+                    return 0;
+                }
+        }
+        return 1;
+}
+
+int main(void) {
+        int num;
+        scanf("%d",&num);
+        if (fun(num) == 1) {
+                printf("YES");
+        }
+        else {
+                printf("NO");
+        }
+        return 0;
+}
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Да се въведат две цеди числа А и В и да се изведе сумата на всички числа между тях, които са кратни на 3.
+
+#include <stdio.h>
+
+int main(void) {
+#include<stdio.h>
+        int a;
+        scanf("%d",&a);
+        int b;
+        scanf("%d",&b);
+        int sum = 0;
+
+        for (int i = a+1; i <= b; i++) {
+            if (i % 3 == 0) {
+                sum += i;
+            }
+        }
+        printf("%d",sum);
+
+        return 0;
+}
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Да се въведе число N и да се намери най-голямата цифра в него.
+
+#include <stdio.h>
+
+int main(void) {
+        int number;
+        scanf("%d",&number);
+        int max;
+        for ( ; number != 0; number /= 10) {
+                if (number % 10 > max) {
+                        max = number % 10;
+                }
+        }
+        printf("%d",max);
+        return 0;
+}
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Да се въведат числа, докато потребителят не въведе 0. След това програмната трябва да изведе брой въведени числа, тяхната сума и средноаритметичното им.
+
+#include <stdio.h>
+
+int main(void) {
+        int num;
+        scanf("%d",&num);
+        int sum = 0;
+        int count = 0;
+        while(num!=0) {
+                sum += num;
+                count++;
+                scanf("%d",&num);
+        }
+        printf("Sum:%d\n",sum);
+        printf("Count:%d\n",count);
+        printf("Average:%d\n",sum/count);
+        return 0;
+}
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Да се напише програма която извежда всички числа на Фибоначи до дадено N.
+N = 50 -> 1, 1, 2, 3, 5, 8, 13, 21, 34
+
+#include <stdio.h>
+
+int main(void) {
+    int n;
+    scanf("%d", &n);
+    int fibonacciNum1 = 1;
+    int fibonacciNum2 = 1;
+    int fibonacciNum = 0;
+    printf("fibonacci numbers N = %d: %d", n, fibonacciNum1);
+    printf(" %d", fibonacciNum2);
+    while (fibonacciNum < n) {
+        fibonacciNum = fibonacciNum1 + fibonacciNum2;
+        if (fibonacciNum > n) {
+            return 0;
+        }
+        fibonacciNum1 = fibonacciNum2;
+        fibonacciNum2 = fibonacciNum;
+        printf(" %d", fibonacciNum);
+    }
+        return 0;
+}
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Да се напише функция, която приема две цели числа и връща тяхното най-голям общ делител(НОД). 
+
+#include <stdio.h>
+
+int fun(int a, int b) {
+	int nod;
+        if (a>b) {
+                for (int i = 2; i< = b; i++) {
+                        if (a % i == 0 && b % i == 0 && nod < i) {
+                                nod = i;
+                        }
+                }
+        }
+        else {
+                for (int i = 2; i <= a; i++) {
+                        if (a % i == 0 && b % i == 0 && nod < i) {
+                                nod = i;
+                        }
+                }
+        }
+        return nod;
+}
+
+int main(void) {
+        int a;
+        scanf("%d",&a);
+        int b;
+        scanf("%d",&b);
+        printf("%d",fun(a,b));
+        return 0;
+}
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Да се напише фyнкция, която приема цяло число и връща 1, ако е просто и 0, ако не е.
+
+#include <stdio.h>
+
+int fun(int number) {
+        for(int i=2;i<number;i++) {
+                if (number % i == 0) {
+                        return 0;
+                }
+        }
+        return 1;
+}
+
+int main(void) {
+        int num;
+        scanf("%d",&num);
+        printf("%d",fun(num));
+        return 0;
+}
+
 
